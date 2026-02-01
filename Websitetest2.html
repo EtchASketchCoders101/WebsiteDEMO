@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Something Special 💍💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* ---------- INTRO / SHOPFRONT ---------- */
+    .intro {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #222, #000 70%);
+      color: white;
+      z-index: 5;
+      animation: fadeOut 2s ease forwards;
+      animation-delay: 12s;
+    }
+
+    .shop {
+      text-align: center;
+      animation: slowZoom 12s ease forwards;
+    }
+
+    .ring-box {
+      width: 120px;
+      height: 90px;
+      margin: 0 auto 20px;
+      background: linear-gradient(145deg, #444, #111);
+      border-radius: 12px;
+      position: relative;
+      animation: boxOpen 3s ease forwards;
+      animation-delay: 6s;
+    }
+
+    .ring-box::before {
+      content: "💍";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+      opacity: 0;
+      animation: ringReveal 3s ease forwards;
+      animation-delay: 6s;
+    }
+
+    @keyframes boxOpen {
+      to { transform: rotateX(25deg) translateY(-10px); }
+    }
+
+    @keyframes ringReveal {
+      to { opacity: 1; }
+    }
+
+    .shop h1 {
+      margin: 10px 0 5px;
+      font-weight: 300;
+      letter-spacing: 3px;
+    }
+
+    .shop p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; pointer-events: none; }
+    }
+
+    /* ---------- VALENTINE SCENE ---------- */
+    .valentine {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 12s;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: rgba(230, 57, 70, 0.6);
+      font-size: 18px;
+      animation: floatUp 8s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+
+    .card {
+      background: white;
+      padding: 35px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      max-width: 420px;
+      width: 90%;
+      animation: gentleFloat 4s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    h2 {
+      color: #e63946;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .teddy {
+      width: 140px;
+      margin: 10px auto 20px;
+      animation: teddyBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes teddyBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.03); }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, font-size 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .yes { background: #e63946; color: white; }
+    .no { background: #ddd; color: #333; }
+
+    .message {
+      margin-top: 22px;
+      font-size: 1.2rem;
+      color: #e63946;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INTRO SHOPFRONT -->
+  <div class="intro">
+    <div class="shop">
+      <div class="ring-box"></div>
+      <h1>FOREVER & CO.</h1>
+      <p>One question. One answer.</p>
+    </div>
+  </div>
+
+  <!-- VALENTINE SCENE -->
+  <div class="valentine">
+
+    <audio autoplay loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c6c7c8a0c.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="transitionSound">
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_5b65e8d71a.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="heart" style="left: 15%; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="left: 35%; animation-delay: 2s;">💗</div>
+    <div class="heart" style="left: 55%; animation-delay: 4s;">❤️</div>
+    <div class="heart" style="left: 75%; animation-delay: 1s;">💖</div>
+
+    <div class="card">
+      <h2>Hey ❤️</h2>
+      <img class="teddy" src="https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif" alt="Cute teddy holding a heart" />
+      <p>This is the easiest yes you’ll make all year…<br><strong>Will you be my Valentine?</strong></p>
+
+      <div class="buttons">
+        <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💕</button>
+        <button class="no" id="noBtn" onclick="sayNo()">No 🙈</button>
+      </div>
+
+      <div class="message" id="message"></div>
+    </div>
+  </div>
+
+  <script>
+    let noClicks = 0;
+
+    setTimeout(() => {
+      document.getElementById('transitionSound').play();
+    }, 12000);
+
+    function sayYes() {
+      const msg = document.getElementById('message');
+      msg.style.display = 'block';
+      msg.innerHTML = "Yay!! 💖 You just made my day. I can't wait for Valentine's with you 😘";
+      document.getElementById('noBtn').style.display = 'none';
+    }
+
+    function sayNo() {
+      noClicks++;
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
+      const msg = document.getElementById('message');
+
+      msg.style.display = 'block';
+      msg.innerHTML = "Hmm… are you sure? 😏 Try again.";
+
+      yesBtn.style.transform = `scale(${1 + noClicks * 0.2})`;
+      yesBtn.style.fontSize = `${1 + noClicks * 0.1}rem`;
+      noBtn.style.transform = `scale(${Math.max(0.45, 1 - noClicks * 0.15)})`;
+
+      if (noClicks >= 5) {
+        noBtn.style.display = 'none';
+        msg.innerHTML = "Okay okay 😌 looks like there's only one choice left 💕";
+      }
+    }
+  </script>
+</body>
+</html>
